@@ -1,7 +1,26 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-}
+	reactStrictMode: true,
+	swcMinify: true,
+	images: {
+		domains: [
+			'lh3.googleusercontent.com',
+			'openseauserdata.com',
+			'brand.assets.adidas.com',
+			'media0.giphy.com',
+			'avatars.dicebear.com',
+			'media1.giphy.com',
+			'media3.giphy.com',
+			'media2.giphy.com',
+			'media4.giphy.com',
+			'tailwindui.com',
+			"fakestoreapi.com",
+			"links.papareact.com",
+			"dummyjson.com",
+			'placeimg.com',
+			'api.lorem.space'
+		],
+	},
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
