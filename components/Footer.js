@@ -41,9 +41,9 @@ const footerLinks = [
 ];
 const Footer = () => {
   return (
-    <div className="mt-auto bg-gray-400 flex flex-col flex-nowrap w-full">
+    <div className="mt-72 bg-gray-400 flex flex-col flex-nowrap w-full">
       <div className="p-0 md:px-10 max-w-screen-2xl mx-0 my-auto w-full">
-        <div className="text-xs bg-[#1a1a2c] text-white px-4 py-12">
+        <div className="text-md bg-[#1a1a2c] text-white px-4 py-12">
           <strong>Disclaimer:</strong> This is not the official Amazon Store. It
           is a redesign, built purely for educational purpose.
         </div>
