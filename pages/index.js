@@ -1,4 +1,5 @@
 import React from "react";
+import Banner from "../components/Banner";
 
 import Layout from "../components/Layout";
 import ProductItem from "../components/ProductItem";
@@ -8,11 +9,11 @@ const Home = () => {
   return (
     <>
       <Layout title="Home">
+        <Banner />
         <div
-          className="grid grid-cols-1
-                        sm:grid-cols-2 gap-5
-                        md:grid-cols-3
-                        lg:grid-cols-4"
+          className="grid grid-cols-1 gap-5
+                      md:grid-cols-2
+                      lg:grid-cols-4 "
         >
           {data.products.map((product) => (
             <ProductItem product={product} key={product.slug} />

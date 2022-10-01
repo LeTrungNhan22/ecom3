@@ -3,6 +3,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
+
 const Layout = ({ title, children }) => {
   return (
     <>
@@ -11,9 +12,16 @@ const Layout = ({ title, children }) => {
         <meta name="description" content="Ecommerce Website" />
         <link rel="icon " href="/favicon.ico" />
       </Head>
-      <div className="flex min-h-screen flex-col justify-between">
+      <div className="flex min-h-screen flex-col justify-between ">
         <Navbar />
-        <main className="mx-auto mt-6 px-5">{children}</main>
+        <main
+          className="md:container 
+                         mx-auto w-full
+                         mt-28 
+                         md:mt-0 relative "
+        >
+          {children}
+        </main>
         <Footer />
       </div>
     </>

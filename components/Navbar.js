@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import {
   AiOutlineSearch,
   AiOutlineHeart,
@@ -9,10 +9,13 @@ import {
 import { GoThreeBars } from "react-icons/go";
 
 import logo from "../assets/amazon_logo.png";
+import { Store } from "../utils/Store";
 
 const Header = () => {
+  const { state, dispatch } = useContext(Store);
+  const { cart } = state;
   return (
-    <header className="px-3 lg:px-10 py-4 shadow-md bg-gray-100 ">
+    <header className="px-3 lg:px-10 py-4 shadow-md bg-gray-100 fixed w-full z-[99] bg-gradient-to-t from-gray-100 to-transparent ">
       <nav className="flex items-center justify-between transition duration-200">
         <Link href="/">
           <div className="text-xs shadow-md p-2 rounded-xl cursor-pointer hover:scale-105 transition-all duration-300 mr-3 bg-white ">
@@ -87,18 +90,21 @@ const Header = () => {
               </span>
             </a>
           </Link>
-          <Link href="/wishlist">
+          <Link href="/cart">
             <a className="text-center flex flex-col items-center justify-center text-gray-700 hover:text-amber-500 hover:scale-105 duration-300  transition relative">
               <div className="text-2xl">
                 <AiOutlineShoppingCart />
               </div>
               <div className="text-xs leading-3 font-semibold">Cart</div>
-              <span
-                className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center
+
+              {cart.cartItems.length > 0 && (
+                <span
+                  className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center
               justify-center bg-amber-500 text-white text-xs shadow-sm"
-              >
-                2
-              </span>
+                >
+                  {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                </span>
+              )}
             </a>
           </Link>
         </div>

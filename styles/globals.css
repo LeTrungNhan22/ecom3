@@ -12,6 +12,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: #fafafa;
 }
 a {
   color: inherit;
@@ -22,7 +23,10 @@ a {
   .card {
     @apply bg-white text-gray-700
         w-full min-h-[10rem]
-        shadow-lg rounded-md overflow-hidden hover:scale-105 transition duration-300;
+        shadow-md rounded-md overflow-hidden hover:shadow-lg transition duration-300;
+  }
+  .badge {
+    @apply px-3 py-1 rounded-full text-xs bg-gray-100;
   }
   .badge {
     @apply px-3 py-1 rounded-full text-xs bg-gray-100;
@@ -40,10 +44,10 @@ a {
   .button-primary {
     @apply bg-amber-400 hover:bg-amber-500
     px-6 py-2 rounded-md text-white font-medium
-    tracking-wider transition;
+    tracking-wider transition hover:shadow-md;
   }
   .button-icon {
     @apply flex-grow
-      flex justify-center items-center bg-gray-300 hover:bg-gray-300/80 transition rounded-md;
+      flex justify-center items-center bg-gray-300 hover:bg-gray-300/80 transition rounded-md hover:shadow-md;
   }
 }
