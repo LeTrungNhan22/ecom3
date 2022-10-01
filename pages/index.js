@@ -9,7 +9,8 @@ const Home = () => {
     <>
       <Layout title="Home">
         <div
-          className="grid grid-cols-1 gap-4 
+          className="grid grid-cols-1
+                        sm:grid-cols-2 gap-5
                         md:grid-cols-3
                         lg:grid-cols-4"
         >

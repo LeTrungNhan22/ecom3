@@ -13,9 +13,7 @@ const Layout = ({ title, children }) => {
       </Head>
       <div className="flex min-h-screen flex-col justify-between">
         <Navbar />
-        <main className="container m-auto mt-4 px-4 max-h-screen">
-          {children}
-        </main>
+        <main className="mx-auto mt-6 px-5">{children}</main>
         <Footer />
       </div>
     </>
