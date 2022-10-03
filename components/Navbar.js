@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   AiOutlineSearch,
   AiOutlineHeart,
@@ -14,6 +15,7 @@ import { Store } from "../utils/Store";
 const Header = () => {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
+
   return (
     <header className="px-3 lg:px-10 py-4 shadow-md bg-gray-100 fixed w-full z-[99] bg-gradient-to-t from-gray-100 to-transparent ">
       <nav className="flex items-center justify-between transition duration-200">
@@ -22,19 +24,18 @@ const Header = () => {
             <Image src={logo} width={50} height={50} alt="logo"></Image>
           </div>
         </Link>
-
         <div className="hidden xl:flex items-center space-x-6">
-          <Link href="/">
+          <Link href="/" className="">
             <a>
-              <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-amber-400 relative inline-block hover:scale-105 duration-200">
-                <span class="relative text-white uppercase lg:text-md text-xs">
+              <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-amber-400 relative inline-block hover:scale-105 duration-200">
+                <span className="relative text-white uppercase lg:text-md text-xs">
                   Sell now!
                 </span>
               </span>
             </a>
           </Link>
           <Link href="/">
-            <a href="">Home</a>
+            <a>Home</a>
           </Link>
           <Link href="/">
             <a href="">Category</a>
@@ -53,9 +54,9 @@ const Header = () => {
             placeholder="Search..."
           />
 
-          <button class="relative inline-flex items-center justify-start px-7 py-3 overflow-hidden font-medium transition-all bg-white rounded hover:bg-white group border border-amber-500 rounded-r-full">
-            <span class="w-48 h-48 rounded rotate-[-40deg] bg-amber-500 absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
-            <span class="relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white">
+          <button className="relative inline-flex items-center justify-start px-7 py-3 overflow-hidden font-medium transition-all bg-white rounded hover:bg-white group border border-amber-500 rounded-r-full">
+            <span className="w-48 h-48 rounded rotate-[-40deg] bg-amber-500 absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
+            <span className="relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white">
               <AiOutlineSearch size={20} />
             </span>
           </button>
@@ -97,12 +98,12 @@ const Header = () => {
               </div>
               <div className="text-xs leading-3 font-semibold">Cart</div>
 
-              {cart.cartItems.length > 0 && (
+              {cart?.cartItems.length > 0 && (
                 <span
                   className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center
               justify-center bg-amber-500 text-white text-xs shadow-sm"
                 >
-                  {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+  {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
                 </span>
               )}
             </a>
@@ -111,19 +112,19 @@ const Header = () => {
 
         <div className="hidden xl:flex space-x-4 items-center ">
           <Link href="/">
-            <a class="relative px-6 py-3 font-bold text-black group shadow-md bg-white">
-              <span class="absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-gray-200 group-hover:translate-x-0 group-hover:translate-y-0"></span>
-              <span class="absolute inset-0 w-full h-full border-4 border-black"></span>
-              <span class="relative uppercase  text-center text-xs xl:text-sm">
+            <a className="relative px-6 py-3 font-bold text-black group shadow-md bg-white">
+              <span className="absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-gray-200 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+              <span className="absolute inset-0 w-full h-full border-4 border-black"></span>
+              <span className="relative uppercase  text-center text-xs xl:text-sm">
                 Sign Up
               </span>
             </a>
           </Link>
           <Link href="/">
-            <a class="relative px-6 py-3 font-bold text-black group shadow-md bg-white">
-              <span class="absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-amber-400 group-hover:translate-x-0 group-hover:translate-y-0"></span>
-              <span class="absolute inset-0 w-full h-full border-4 border-black"></span>
-              <span class="relative uppercase  text-center text-xs xl:text-sm">
+            <a className="relative px-6 py-3 font-bold text-black group shadow-md bg-white">
+              <span className="absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-amber-400 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+              <span className="absolute inset-0 w-full h-full border-4 border-black"></span>
+              <span className="relative uppercase  text-center text-xs xl:text-sm">
                 Sign In
               </span>
             </a>

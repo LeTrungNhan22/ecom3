@@ -6,20 +6,20 @@ import { BsFillHeartFill } from "react-icons/bs";
 import { AiFillEye } from "react-icons/ai";
 const ProductItem = ({ product }) => {
   return (
+    
     <div className="card">
       <Link href={`/product/${product.slug}`}>
         <a>
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-80 object-cover object-center shadow-md hover:shadow-lg"
+            className="w-full max-h-72 object-cover object-center shadow-md hover:shadow-lg"
           />
         </a>
       </Link>
-      <div className="p-5 flex-col gap-3">
+      <div className="p-5 flex-col gap-4 space-y-2">
         {/* badge */}
-        <div className="flex items-center gap-2">
-          <span className="badge">{product.brand}</span>
+        <div className="flex items-center  gap-2">
           <span className="badge">{product.brand}</span>
         </div>
         <h2 className="product-title" title={product.name}>

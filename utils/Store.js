@@ -3,10 +3,13 @@ import { createContext, useReducer } from "react";
 export const Store = createContext();
 
 const initialState = {
-  cart: { cartItems: [] },
+  cart: {
+    cartItems: [],
+  },
 };
 
 function reducer(state, action) {
+  console.log("action", action);
   switch (action.type) {
     case "CART_ADD_ITEM": {
       const newItem = action.payload;
@@ -20,6 +23,7 @@ function reducer(state, action) {
         : [...state.cart.cartItems, newItem];
       return { ...state, cart: { ...state.cart, cartItems } };
     }
+
     default:
       return state;
   }

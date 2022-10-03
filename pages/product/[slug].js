@@ -13,6 +13,7 @@ const ProductScreen = () => {
   const { state, dispatch } = useContext(Store);
   const { query } = useRouter();
   const { slug } = query;
+
   const product = data.products.find((x) => x.slug === slug);
   if (!product) {
     return <div>Product not found</div>;
@@ -80,7 +81,7 @@ const ProductScreen = () => {
                 onClick={addToCartHandler}
               >
                 <div className="flex space-x-4 items-center justify-center p-2">
-                  <BsCartPlus />
+                  <BsCartPlus className="text-black text-xl" />
                   <span className="text-black text-sm uppercase font-bold">
                     Add to cart
                   </span>
@@ -88,7 +89,7 @@ const ProductScreen = () => {
               </button>
               <button className="button-icon w-full">
                 <div className="flex space-x-4 items-center justify-center p-2">
-                  <BsFillHeartFill />
+                  <BsFillHeartFill className="text-black text-xl" />
                   <span className="text-black text-sm uppercase font-bold">
                     Add to wishlist
                   </span>

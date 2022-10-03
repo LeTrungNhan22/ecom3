@@ -3,7 +3,6 @@ import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-
 const Layout = ({ title, children }) => {
   return (
     <>
@@ -13,12 +12,14 @@ const Layout = ({ title, children }) => {
         <link rel="icon " href="/favicon.ico" />
       </Head>
       <div className="flex min-h-screen flex-col justify-between ">
-        <Navbar />
+        <header>
+          <Navbar />
+        </header>
+
         <main
-          className="md:container 
-                         mx-auto w-full
-                         mt-28 
-                         md:mt-0 relative "
+          className="xl:container  mx-auto w-full mt-28 
+                         md:mt-0 relative px-2 sm:px-0 "
+
         >
           {children}
         </main>

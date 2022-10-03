@@ -42,18 +42,20 @@ const footerLinks = [
 const Footer = () => {
   return (
     <div className="mt-20 bg-gray-400 flex flex-col flex-nowrap w-full">
-      <div className="p-0 md:px-10 max-w-screen-2xl mx-0 my-auto w-full">
-        <div className="text-md bg-[#1a1a2c] text-white px-4 py-12">
+      <div className="px-3 md:px-10 max-w-screen-2xl mx-0 my-auto w-full">
+        <div className="text-md bg-[#1a1a2c] text-white px-4 py-5">
           <strong>Disclaimer:</strong> This is not the official Amazon Store. It
           is a redesign, built purely for educational purpose.
         </div>
-        <div className=" flex lg:p-12 items-start justify-between">
+        <div className=" flex-col md:flex-row flex lg:p-12 items-start justify-between">
           {footerLinks.map((link, index) => (
-            <div className="mr-12 w-[calc(25%-3rem)]" key={index}>
-              <h6>{link.title}</h6>
+            <div className="mr-12 w-full py-3 " key={index}>
+              <h6 className="font-bold mb-2">{link.title}</h6>
               <ul>
                 {link.list.map((item, index) => (
-                  <li key={index}>{item}</li>
+                  <li className="text-sm text-gray-200/80" key={index}>
+                    {item}
+                  </li>
                 ))}
               </ul>
             </div>
