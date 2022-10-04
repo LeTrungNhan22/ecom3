@@ -1,19 +1,49 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import ReactStars from "react-rating-stars-component";
 import { BsFillHeartFill } from "react-icons/bs";
 import { AiFillEye } from "react-icons/ai";
+
+import toast from "react-hot-toast";
+import { Store } from "../utils/Store";
 const ProductItem = ({ product }) => {
+  const { state, dispatch } = useContext(Store);
+
+  const addToCartHandler = () => {
+    const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+
+    if (product.countInStock < quantity) {
+      toast.error("Sorry. Product is out of stock");
+      return;
+    }
+
+    dispatch({
+      type: "CART_ADD_ITEM",
+      payload: { ...product, quantity },
+    });
+    toast.success(() => (
+      <span>
+        {" "}
+        Added product in your cart go to your{" "}
+        <b className="font-bold text-amber-500">
+          <Link href="/cart">
+            <a>Cart</a>
+          </Link>
+        </b>
+      </span>
+    ));
+  };
+
   return (
-    
     <div className="card">
       <Link href={`/product/${product.slug}`}>
         <a>
           <img
             src={product.image}
             alt={product.name}
-            className="w-full max-h-72 object-cover object-center shadow-md hover:shadow-lg"
+            className="w-full max-h-fit object-cover object-center shadow-md hover:shadow-lg"
           />
         </a>
       </Link>
@@ -51,7 +81,10 @@ const ProductItem = ({ product }) => {
         </span>
         {/* product action button */}
         <div className="mt-5 flex gap-2">
-          <button className="button-primary text-black uppercase text-sm font-semibold">
+          <button
+            onClick={addToCartHandler}
+            className="button-primary text-black uppercase text-sm font-semibold"
+          >
             Add to cart
           </button>
           <button className="button-icon">

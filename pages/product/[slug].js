@@ -32,7 +32,17 @@ const ProductScreen = () => {
       type: "CART_ADD_ITEM",
       payload: { ...product, quantity },
     });
-    toast.success("Added product in your cart");
+    toast.success(() => (
+      <span>
+        {" "}
+        Added product in your cart go to your{" "}
+        <b className="font-bold text-amber-500">
+          <Link href="/cart">
+            <a>Cart</a>
+          </Link>
+        </b>
+      </span>
+    ));
   };
 
   return (

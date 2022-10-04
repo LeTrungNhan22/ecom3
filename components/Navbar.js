@@ -101,9 +101,9 @@ const Header = () => {
               {cart?.cartItems.length > 0 && (
                 <span
                   className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center
-              justify-center bg-amber-500 text-white text-xs shadow-sm"
+                             justify-center bg-amber-500 text-white text-xs shadow-sm"
                 >
-  {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                  {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
                 </span>
               )}
             </a>

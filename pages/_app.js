@@ -5,7 +5,7 @@ import { StoreProvider } from "../utils/Store";
 function MyApp({ Component, pageProps }) {
   return (
     <StoreProvider>
-      <Toaster position="top-center" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={true} />
       <Component {...pageProps} />
     </StoreProvider>
   );
