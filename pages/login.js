@@ -74,11 +74,13 @@ const LoginScreen = () => {
                     className="outline-none bg-gray-200 text-sm flex-1 "
                   ></input>
                 </div>
+
                 {errors.email && (
-                  <div className="text-red-500 mb-2 ">
+                  <div className="text-red-500 mb-2 w-2/5 text-left ">
                     {errors.email.message}
                   </div>
                 )}
+
                 <div className="bg-gray-200 w-64 p-3 flex items-center mb-3 rounded-2xl shadow-inner shadow-gray-400 transition duration-200 focus-within:shadow-gray-600 focus-within:scale-105">
                   <TbLock className="text-gray-400 mr-2" />
                   <label htmlFor="password"></label>
@@ -98,7 +100,7 @@ const LoginScreen = () => {
                   />
                 </div>
                 {errors.password && (
-                  <div className="text-red-500 mb-2">
+                  <div className="text-red-500 mb-2 w-2/5 text-left ">
                     {errors.password.message}
                   </div>
                 )}
