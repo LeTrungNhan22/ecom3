@@ -22,7 +22,9 @@ const Layout = ({ title, children }) => {
         >
           {children}
         </main>
-        <Footer />
+        <footer>
+          <Footer />
+        </footer>
       </div>
     </>
   );

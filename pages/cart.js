@@ -127,8 +127,7 @@ const CartScreen = () => {
                             src={item.image}
                             width={100}
                             height={100}
-                            alt={item.name}
-                          ></Image>
+                            alt={item.name}></Image>
                           &nbsp;
                         </a>
                       </Link>
@@ -146,8 +145,7 @@ const CartScreen = () => {
                         <span className="flex border border-gray-500 ">
                           <span
                             className=" border-r p-2 text-xl text-green-600 cursor-pointer"
-                            onClick={() => decQuantity(item)}
-                          >
+                            onClick={() => decQuantity(item)}>
                             <AiOutlineMinus />
                           </span>
                           <span className="px-3 items-center flex">
@@ -155,8 +153,7 @@ const CartScreen = () => {
                           </span>
                           <span
                             onClick={() => incQuantity(item)}
-                            className="border-l p-2 text-xl text-red-500 cursor-pointer"
-                          >
+                            className="border-l p-2 text-xl text-red-500 cursor-pointer">
                             <AiOutlinePlus />
                           </span>
                         </span>
@@ -169,8 +166,7 @@ const CartScreen = () => {
                       <span className="flex items-center justify-center text-xl">
                         <button
                           onClick={() => removeItemHandler(item)}
-                          className="text-xl hover:text-red-500 hover:scale-110 duration-300 transition"
-                        >
+                          className="text-xl hover:text-red-500 hover:scale-110 duration-300 transition">
                           <AiOutlineCloseCircle />
                         </button>
                       </span>
@@ -194,8 +190,7 @@ const CartScreen = () => {
               <li>
                 <button
                   onClick={() => router.push("login?redirect=/shipping")}
-                  className="button-primary w-full font-semibold text-xl text-black"
-                >
+                  className="button-primary w-full font-semibold text-xl text-black">
                   Thanh toán
                 </button>
               </li>

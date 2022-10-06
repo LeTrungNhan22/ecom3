@@ -8,14 +8,18 @@ import {
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { GoThreeBars } from "react-icons/go";
+import { useSession } from "next-auth/react";
 
 import logo from "../assets/amazon_logo.png";
 import { Store } from "../utils/Store";
 
 const Header = () => {
+  const { status, data: session } = useSession();
+
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const [cartItemsCount, setCartItemsCounts] = useState(0);
+
   useEffect(() => {
     setCartItemsCounts(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);
@@ -114,26 +118,32 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className="hidden xl:flex space-x-4 items-center ">
-          <Link href="/">
-            <a className="relative px-6 py-3 font-bold text-black group shadow-md bg-white">
-              <span className="absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-gray-200 group-hover:translate-x-0 group-hover:translate-y-0"></span>
-              <span className="absolute inset-0 w-full h-full border-4 border-black"></span>
-              <span className="relative uppercase  text-center text-xs xl:text-sm">
-                Đăng ký
-              </span>
-            </a>
-          </Link>
-          <Link href="/login">
-            <a className="relative px-6 py-3 font-bold text-black group shadow-md bg-white">
-              <span className="absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-amber-400 group-hover:translate-x-0 group-hover:translate-y-0"></span>
-              <span className="absolute inset-0 w-full h-full border-4 border-black"></span>
-              <span className="relative uppercase  text-center text-xs xl:text-sm">
-                Đăng nhập
-              </span>
-            </a>
-          </Link>
-        </div>
+        {status === "loading" ? (
+          "Loading"
+        ) : session?.user ? (
+          <div className="text-black">{session.user.name}</div>
+        ) : (
+          <div className="hidden xl:flex space-x-4 items-center ">
+            <Link href="/register">
+              <a className="relative px-6 py-3 font-bold text-black group shadow-md bg-white">
+                <span className="absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-gray-200 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+                <span className="absolute inset-0 w-full h-full border-4 border-black"></span>
+                <span className="relative uppercase  text-center text-xs xl:text-sm">
+                  Đăng ký
+                </span>
+              </a>
+            </Link>
+            <Link href="/login">
+              <a className="relative px-6 py-3 font-bold text-black group shadow-md bg-white">
+                <span className="absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-amber-400 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+                <span className="absolute inset-0 w-full h-full border-4 border-black"></span>
+                <span className="relative uppercase  text-center text-xs xl:text-sm">
+                  Đăng nhập
+                </span>
+              </a>
+            </Link>
+          </div>
+        )}
         <div className="flex xl:hidden">
           <GoThreeBars size={30} />
         </div>

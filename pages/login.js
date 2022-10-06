@@ -3,20 +3,45 @@ import { FaFacebookF, FaGoogle, FaRegEnvelope } from "react-icons/fa";
 import { TbLock } from "react-icons/tb";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 import Layout from "../components/Layout";
+import toast, { ToastBar, Toaster } from "react-hot-toast";
+import { getError } from "../utils/error";
 
 const LoginScreen = () => {
+  const { data: session } = useSession();
+  const router = useRouter();
+  const { redirect } = router.query;
+
+  useEffect(() => {
+    console.log(session?.user);
+    if (session?.user) {
+      router.push(redirect || "/");
+    }
+  }, [session, router, redirect]);
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm();
 
-  const submitHandler = ({ email, password }) => {};
-  useEffect(() => {
-    console.log(errors.email);
-  });
+  const submitHandler = async ({ email, password }) => {
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+      if (result.error) {
+        toast.error(result.error);
+      }
+    } catch (err) {
+      toast.error(getError(err));
+    }
+  };
+
   return (
     <Layout title="Login">
       <main className="flex items-center justify-center w-full flex-1 px-3 lg:px-20 text-center md:mt-28 mt-10 transition duration-300">
@@ -76,7 +101,7 @@ const LoginScreen = () => {
                 </div>
 
                 {errors.email && (
-                  <div className="text-red-500 mb-2 w-2/5 text-left ">
+                  <div className="text-red-500 mb-2 w-2/5 text-left font-medium italic inline-block duration-300 transition-all">
                     {errors.email.message}
                   </div>
                 )}
@@ -100,7 +125,7 @@ const LoginScreen = () => {
                   />
                 </div>
                 {errors.password && (
-                  <div className="text-red-500 mb-2 w-2/5 text-left ">
+                  <div className="text-red-500 mb-2 w-2/5 text-left font-medium italic inline-block duration-200 transition-all">
                     {errors.password.message}
                   </div>
                 )}

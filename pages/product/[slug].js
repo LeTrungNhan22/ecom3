@@ -8,6 +8,7 @@ import { toast } from "react-hot-toast";
 import Layout from "../../components/Layout";
 import data from "../../utils/data";
 import { Store } from "../../utils/Store";
+import { motion } from "framer-motion";
 
 const ProductScreen = () => {
   const { state, dispatch } = useContext(Store);
@@ -56,14 +57,16 @@ const ProductScreen = () => {
       </div>
       <div className=" grid md:grid-cols-4 md:gap-3 sm:space-x-5 space-y-5 mx-3">
         <div className="md:col-span-2">
-          <Image
-            src={product.image}
-            alt={product.name}
-            width={500}
-            height={500}
-            layout={"responsive"}
-            className="rounded-lg shadow-xl"
-          ></Image>
+          <motion.div layoutId={product.slug} className="productSingle__image">
+            <Image
+              src={product.image}
+              alt={product.name}
+              width={500}
+              height={500}
+              layout={"responsive"}
+              className="rounded-lg shadow-xl"
+            ></Image>
+          </motion.div>
         </div>
         <div className="md:col-span-2">
           <ul className="space-y-3">
