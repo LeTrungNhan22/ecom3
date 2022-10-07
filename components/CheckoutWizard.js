@@ -7,7 +7,7 @@ const CheckoutWizard = ({ activeStep = 0 }) => {
         (step, index) => (
           <div
             key={step}
-            className={`flex-1 border-b-2 text-center 
+            className={`flex-1 border-b-2 text-center font-semibold 
             ${
               index <= activeStep
                 ? "border-indigo-500"
