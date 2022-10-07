@@ -12,11 +12,36 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Plus Jakarta Sans", sans-serif;
-  background-color: #fafafa;
+	background-color: rgb(226 232 240);
 }
 a {
   color: inherit;
   text-decoration: none;
+}
+@layer base {
+  [type="text"],
+  [type="email"],
+  [type="url"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple],
+  textarea,
+  select {
+    @apply w-full border-gray-400 rounded-lg shadow-sm focus:border-amber-400 focus:ring-amber-400 transition duration-300;
+  }
+  [type="checkbox"],
+  [type="radio"] {
+    @apply border-gray-300 rounded text-indigo-600 focus:ring-indigo-500;
+  }
+  [type="password"] {
+    @apply w-full border-gray-300 rounded-lg  focus:border-gray-300 focus:ring-0;
+  }
 }
 
 @layer components {
@@ -50,5 +75,16 @@ a {
   .button-icon {
     @apply flex-grow
       flex justify-center items-center bg-gray-300 hover:bg-gray-300/80 transition rounded-md hover:shadow-md;
+  }
+  .loginFormInput {
+    @apply outline-none bg-gray-200 text-sm flex-1 
+    border-none border-gray-200 p-0 
+    focus:outline-none focus:border-none 
+    focus-within:border-gray-200
+     focus-within:outline-none !important;
+  }
+  .loginFormInput {
+    @apply outline-none bg-gray-200 text-sm flex-1 
+    p-0;
   }
 }

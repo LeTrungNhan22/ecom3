@@ -44,7 +44,7 @@ const LoginScreen = () => {
 
   return (
     <Layout title="Login">
-      <main className="flex items-center justify-center w-full flex-1 px-3 lg:px-20 text-center md:mt-28 mt-10 transition duration-300">
+      <main className="flex items-center justify-center w-full flex-1 px-3 lg:px-20 text-center  transition duration-300">
         <div className="bg-white rounded-2xl shadow-2xl flex flex-col lg:flex-row w-full lf:w-2/3 max-w-4xl">
           {/* login section */}
           <div className="w-full lf:w-3/5 p-5">
@@ -121,7 +121,7 @@ const LoginScreen = () => {
                     name="password"
                     id="password"
                     placeholder="Password"
-                    className="outline-none bg-gray-200 text-sm flex-1"
+                    className="loginFormInput"
                   />
                 </div>
                 {errors.password && (
@@ -137,7 +137,7 @@ const LoginScreen = () => {
                     <input
                       type="checkbox"
                       name="remember"
-                      className="mr-1 border-none outline-none cursor-pointer "
+                      className="mr-1 border-none outline-none cursor-pointer bg-gray-300 "
                     />
                     Nhớ tài khoản
                   </label>

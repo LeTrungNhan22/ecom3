@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.3",
     "bcryptjs": "^2.4.3",
     "framer-motion": "^7.5.2",
+    "headless": "^1.2.0",
     "js-cookie": "^3.0.1",
     "mongoose": "^6.6.5",
     "next": "12.3.1",
@@ -26,6 +28,7 @@
     "react-tooltip": "^4.2.21"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
     "@types/react": "^18.0.21",
     "autoprefixer": "^10.4.12",
     "eslint": "8.24.0",

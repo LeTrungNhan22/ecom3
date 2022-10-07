@@ -48,7 +48,7 @@ const ProductScreen = () => {
 
   return (
     <Layout title={product.name}>
-      <div className="py-2 mt-28 my-3">
+      <div className="py-2 my-3">
         <Link href="/">
           <a className=" w-full shadow-md bg-amber-400 mb-5 p-2 rounded-md font-bold">
             Back{" "}

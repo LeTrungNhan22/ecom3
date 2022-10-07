@@ -85,7 +85,7 @@ const CartScreen = () => {
   return (
     <Layout title="Shopping Cart">
       {cartItems.length === 0 ? (
-        <div className="flex justify-center items-center space-x-10 mt-28">
+        <div className="flex justify-center items-center space-x-10">
           <div>
             <Image width={500} height={500} src={emptyCart} alt="..."></Image>
           </div>
@@ -105,10 +105,10 @@ const CartScreen = () => {
           </div>
         </div>
       ) : (
-        <div className="grid md:grid-cols-4 md:map-5 mt-28">
+        <div className="grid md:grid-cols-4 md:map-5 ">
           <div className="overflow-x-auto md:col-span-3 mx-3">
             <table className="min-w-full mb-3">
-              <thead className="border border-b">
+              <thead className="border border-b border-amber-500">
                 <tr>
                   <th className="p-5 text-left">Sản phẩm </th>
                   <th className="p-5 text-center">Tên sản phẩm</th>
@@ -119,7 +119,10 @@ const CartScreen = () => {
               </thead>
               <tbody>
                 {cartItems.map((item) => (
-                  <tr key={item.slug} className="border border-b">
+                  <tr
+                    key={item.slug}
+                    className="border border-b border-amber-500"
+                  >
                     <td>
                       <Link href={`product/${item.slug}`}>
                         <a className="flex items-center m-5 ">
@@ -127,7 +130,8 @@ const CartScreen = () => {
                             src={item.image}
                             width={100}
                             height={100}
-                            alt={item.name}></Image>
+                            alt={item.name}
+                          ></Image>
                           &nbsp;
                         </a>
                       </Link>
@@ -145,7 +149,8 @@ const CartScreen = () => {
                         <span className="flex border border-gray-500 ">
                           <span
                             className=" border-r p-2 text-xl text-green-600 cursor-pointer"
-                            onClick={() => decQuantity(item)}>
+                            onClick={() => decQuantity(item)}
+                          >
                             <AiOutlineMinus />
                           </span>
                           <span className="px-3 items-center flex">
@@ -153,7 +158,8 @@ const CartScreen = () => {
                           </span>
                           <span
                             onClick={() => incQuantity(item)}
-                            className="border-l p-2 text-xl text-red-500 cursor-pointer">
+                            className="border-l p-2 text-xl text-red-500 cursor-pointer"
+                          >
                             <AiOutlinePlus />
                           </span>
                         </span>
@@ -166,7 +172,8 @@ const CartScreen = () => {
                       <span className="flex items-center justify-center text-xl">
                         <button
                           onClick={() => removeItemHandler(item)}
-                          className="text-xl hover:text-red-500 hover:scale-110 duration-300 transition">
+                          className="text-xl hover:text-red-500 hover:scale-110 duration-300 transition"
+                        >
                           <AiOutlineCloseCircle />
                         </button>
                       </span>
@@ -190,7 +197,8 @@ const CartScreen = () => {
               <li>
                 <button
                   onClick={() => router.push("login?redirect=/shipping")}
-                  className="button-primary w-full font-semibold text-xl text-black">
+                  className="button-primary w-full font-semibold text-xl text-black"
+                >
                   Thanh toán
                 </button>
               </li>

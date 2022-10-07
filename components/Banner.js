@@ -4,7 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Banner = () => {
   return (
-    <div className="hidden md:flex mt-28 mb-6 shadow-md ">
+    <div className="hidden md:flex mb-6 shadow-md ">
       <div className="absolute w-full h-32  z-20" />
       <Carousel
         autoPlay

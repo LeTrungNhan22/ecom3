@@ -6,17 +6,25 @@ import {
   AiOutlineSearch,
   AiOutlineHeart,
   AiOutlineShoppingCart,
+  AiOutlineLogout,
 } from "react-icons/ai";
+import { BiCoinStack } from "react-icons/bi";
+import { CgProfile } from "react-icons/cg";
 import { GoThreeBars } from "react-icons/go";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
+import { Menu } from "@headlessui/react";
 
 import logo from "../assets/amazon_logo.png";
+import avatar from "../assets/Avatar.png";
 import { Store } from "../utils/Store";
+import DropdownLink from "./DropdownLink";
+import Cookies from "js-cookie";
 
 const Header = () => {
   const { status, data: session } = useSession();
 
   const { state, dispatch } = useContext(Store);
+
   const { cart } = state;
   const [cartItemsCount, setCartItemsCounts] = useState(0);
 
@@ -24,8 +32,13 @@ const Header = () => {
     setCartItemsCounts(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);
 
+  const logoutClickHandler = () => {
+    Cookies.remove("cart");
+    dispatch({ type: "CART_RESET" });
+    signOut({ callbackUrl: "/login" });
+  };
   return (
-    <header className="px-3 lg:px-10 py-4 shadow-md bg-gray-100 fixed w-full z-[99] bg-gradient-to-t from-gray-100 to-transparent ">
+    <header className="px-3 lg:px-10 py-4 shadow-md bg-gray-100 fixed w-full z-[99] bg-gradient-to-t from-gray-100 to-transparent">
       <nav className="flex items-center justify-between transition duration-200">
         <Link href="/">
           <div className="text-xs shadow-md p-2 rounded-xl cursor-pointer hover:scale-105 transition-all duration-300 mr-3 bg-white ">
@@ -121,7 +134,69 @@ const Header = () => {
         {status === "loading" ? (
           "Loading"
         ) : session?.user ? (
-          <div className="text-black">{session.user.name}</div>
+          <Menu as="div" className="relative inline-block">
+            <Menu.Button>
+              <div className=" flex items-center space-x-5   border border-gray-500 px-3 py-2 rounded-full shadow-md bg-white">
+                <span className="mx-3 font-semibold text-gray-600">
+                  Xin chào,{" "}
+                  <span className="text-amber-600"> {session.user.name}</span>
+                </span>
+                <Image
+                  src={avatar}
+                  alt="avatar__profile"
+                  width={40}
+                  height={40}
+                  className="rounded-full shadow-md border border-gray-400"
+                ></Image>
+              </div>
+            </Menu.Button>
+            <Menu.Items className="absolute right-0 mt-1 w-56 origin-top-right bg-white p-1 rounded-2xl shadow-lg ">
+              <div className="flex flex-col mb-3">
+                <Menu.Item>
+                  <DropdownLink className="dropdown-link" href="/profile">
+                    <a
+                      className="dropdown-link"
+                      href="#"
+                      onClick={logoutClickHandler}
+                    >
+                      <span className="flex flex-row space-x-10 items-center text-lg">
+                        <CgProfile className="text-green-500 mx-1 " />
+                        Profile
+                      </span>
+                    </a>
+                  </DropdownLink>
+                </Menu.Item>
+                <Menu.Item>
+                  <DropdownLink className="dropdown-link" href="/profile">
+                    <a
+                      className="dropdown-link"
+                      href="#"
+                      onClick={logoutClickHandler}
+                    >
+                      <span className="flex flex-row space-x-10 items-center text-lg">
+                        <BiCoinStack className="text-yellow-500 mx-1 " />
+                        Coin
+                      </span>
+                    </a>
+                  </DropdownLink>
+                </Menu.Item>
+                <Menu.Item>
+                  <DropdownLink className="dropdown-link" href="/profile">
+                    <a
+                      className="dropdown-link"
+                      href="#"
+                      onClick={logoutClickHandler}
+                    >
+                      <span className="flex flex-row space-x-10 items-center text-lg">
+                        <AiOutlineLogout className="text-red-500 mx-1 " />
+                        Logout
+                      </span>
+                    </a>
+                  </DropdownLink>
+                </Menu.Item>
+              </div>
+            </Menu.Items>
+          </Menu>
         ) : (
           <div className="hidden xl:flex space-x-4 items-center ">
             <Link href="/register">
