@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+
+
 import CheckoutWizard from "../components/CheckoutWizard";
 import Layout from "../components/Layout";
 import { Store } from "../utils/Store";
@@ -20,8 +22,8 @@ const PaymentScreen = () => {
     formState: { errors },
   } = useForm();
 
-  const submitHandler = (e) => {
-    e.preventDefault();
+  const submitHandler = (event) => {
+    event.preventDefault();
     if (!selectedPaymentMethod) {
       toast.error("Payment method is required");
     }
@@ -31,6 +33,7 @@ const PaymentScreen = () => {
         selectedPaymentMethod,
       },
     });
+
     Cookies.set(
       "cart",
       JSON.stringify({
@@ -53,10 +56,7 @@ const PaymentScreen = () => {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-screen-md">
         <div className="bg-white py-8 px-6 shadow rounded-lg sm:px-10 ">
           <h1 className="mb-4 text-xl">Phương thức thanh toán</h1>
-          <form
-            className="mx-auto max-w-screen-md "
-            onSubmit={handleSubmit(submitHandler)}
-          >
+          <form className="mx-auto max-w-screen-md " onSubmit={submitHandler}>
             {["Paypal", "Stripe", "COD"].map((payment) => (
               <div key={payment} className="mb-4">
                 <input
@@ -72,6 +72,7 @@ const PaymentScreen = () => {
                 </label>
               </div>
             ))}
+
             <div className="mb-4 flex justify-between space-x-3 ">
               <button
                 onClick={() => router.push("/shipping")}

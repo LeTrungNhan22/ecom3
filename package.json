@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.3",
+    "axios": "^1.1.2",
     "bcryptjs": "^2.4.3",
     "framer-motion": "^7.5.2",
     "headless": "^1.2.0",

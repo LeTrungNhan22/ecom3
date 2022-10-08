@@ -22,12 +22,9 @@ import Cookies from "js-cookie";
 
 const Header = () => {
   const { status, data: session } = useSession();
-
   const { state, dispatch } = useContext(Store);
-
   const { cart } = state;
   const [cartItemsCount, setCartItemsCounts] = useState(0);
-
   useEffect(() => {
     setCartItemsCounts(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);

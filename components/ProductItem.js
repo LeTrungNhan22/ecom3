@@ -1,43 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import React, { useContext } from "react";
 import ReactStars from "react-rating-stars-component";
 import { BsFillHeartFill } from "react-icons/bs";
 import { AiFillEye } from "react-icons/ai";
 import { motion } from "framer-motion";
+/*<-------------------------/------------------------->*/
 import { pageZoom, pageTransition } from "../utils/util";
 
-import toast from "react-hot-toast";
-import { Store } from "../utils/Store";
-const ProductItem = ({ product }) => {
-  const { state, dispatch } = useContext(Store);
-
-  const addToCartHandler = () => {
-    const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
-    const quantity = existItem ? existItem.quantity + 1 : 1;
-
-    if (product.countInStock < quantity) {
-      toast.error("Sorry. Product is out of stock");
-      return;
-    }
-
-    dispatch({
-      type: "CART_ADD_ITEM",
-      payload: { ...product, quantity },
-    });
-    toast.success(() => (
-      <span>
-        Đã thêm <span className="text-cyan-500 font-bold">{product.name} </span>{" "}
-        vào
-        <b className="font-bold text-amber-500">
-          <Link href="/cart">
-            <a> Giỏ hàng</a>
-          </Link>
-        </b>
-      </span>
-    ));
-  };
-
+export default function ProductItem({ product, addToCartHandler }) {
   return (
     <motion.div
       initial="initial"
@@ -96,7 +66,7 @@ const ProductItem = ({ product }) => {
           {/* product action button */}
           <div className="mt-5 flex gap-2">
             <button
-              onClick={addToCartHandler}
+              onClick={() => addToCartHandler(product)}
               className="button-primary text-black uppercase text-sm font-semibold"
             >
               Add to cart
@@ -116,6 +86,4 @@ const ProductItem = ({ product }) => {
       </div>
     </motion.div>
   );
-};
-
-export default ProductItem;
+}
