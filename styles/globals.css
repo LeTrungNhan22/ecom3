@@ -20,7 +20,6 @@ a {
 }
 @layer base {
   [type="text"],
-  [type="email"],
   [type="url"],
   [type="number"],
   [type="date"],
@@ -45,11 +44,18 @@ a {
     text-amber-600 
     focus:ring-amber-500;
   }
-  [type="password"] {
+  [type="password"],
+  [type="email"] {
     @apply w-full border-gray-300 rounded-lg 
-    border-none
+    border-none p-0
      focus:border-gray-300 
-     focus:ring-0;
+     focus:ring-0 !important;
+  }
+  .username {
+    @apply w-full border-gray-300 rounded-lg 
+    border-none p-0
+     focus:border-gray-300 
+     focus:ring-0 !important;
   }
 }
 

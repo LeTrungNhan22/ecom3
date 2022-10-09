@@ -22,12 +22,14 @@ export default function ProductItem({ product, addToCartHandler }) {
         <Link href={`/product/${product.slug}`}>
           <a>
             <motion.div layoutId={product.slug} className="product__image">
-              <img
-                loading="lazy"
-                src={product.image}
-                alt={product.name}
-                className="w-full max-h-fit object-cover object-center shadow-md "
-              />
+              <picture>
+                <img
+                  loading="lazy"
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full max-h-fit object-cover object-center shadow-md "
+                />
+              </picture>
             </motion.div>
           </a>
         </Link>

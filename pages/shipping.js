@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import CheckoutWizard from "../components/CheckoutWizard";
@@ -22,11 +22,11 @@ const ShippingScreen = () => {
   const { shippingAddress } = cart;
 
   useEffect(() => {
-    setValue("fullName", shippingAddress.fullName);
-    setValue("address", shippingAddress.address);
-    setValue("city", shippingAddress.city);
-    setValue("postalCode", shippingAddress.postalCode);
-    setValue("country", shippingAddress.country);
+    setValue("fullName", shippingAddress?.fullName);
+    setValue("address", shippingAddress?.address);
+    setValue("city", shippingAddress?.city);
+    setValue("postalCode", shippingAddress?.postalCode);
+    setValue("country", shippingAddress?.country);
   }, [setValue, shippingAddress]);
   //submitHandler  function
   const submitHandler = ({ fullName, address, city, postalCode, country }) => {
@@ -80,7 +80,7 @@ const ShippingScreen = () => {
                   />
                   {errors.fullName && (
                     <div className="text-red-500 mt-2">
-                      {errors.fullName.message}
+                      {errors.fullName?.message}
                     </div>
                   )}
                 </div>
@@ -108,7 +108,7 @@ const ShippingScreen = () => {
                   />
                   {errors.address && (
                     <div className="text-red-500 mt-2">
-                      {errors.address.message}
+                      {errors.address?.message}
                     </div>
                   )}
                 </div>
@@ -132,7 +132,7 @@ const ShippingScreen = () => {
                   />
                   {errors.city && (
                     <div className="text-red-500 mt-2">
-                      {errors.city.message}
+                      {errors.city?.message}
                     </div>
                   )}
                 </div>
@@ -157,7 +157,7 @@ const ShippingScreen = () => {
                   />
                   {errors.postalCode && (
                     <div className="text-red-500 mt-2">
-                      {errors.postalCode.message}
+                      {errors.postalCode?.message}
                     </div>
                   )}
                 </div>
@@ -181,7 +181,7 @@ const ShippingScreen = () => {
                   />
                   {errors.country && (
                     <div className="text-red-500 mt-2">
-                      {errors.country.message}
+                      {errors.country?.message}
                     </div>
                   )}
                 </div>
@@ -216,5 +216,5 @@ const ShippingScreen = () => {
   );
 };
 
-export default ShippingScreen;
 ShippingScreen.auth = true;
+export default ShippingScreen;
