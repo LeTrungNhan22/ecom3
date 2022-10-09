@@ -9,7 +9,7 @@ const initialState = {
     : {
         cartItems: [],
         shippingAddress: {},
-        paymentMethod: {},
+        paymentMethod: "",
       },
 };
 
@@ -58,7 +58,7 @@ function reducer(state, action) {
           },
         },
       };
-    case "SAVE_PAYMENT_ADDRESS":
+    case "SAVE_PAYMENT_METHOD":
       return {
         ...state,
         cart: {
@@ -66,6 +66,7 @@ function reducer(state, action) {
           paymentMethod: action.payload,
         },
       };
+
     default:
       return state;
   }

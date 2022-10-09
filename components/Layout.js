@@ -13,7 +13,7 @@ const Layout = ({ title, children }) => {
         <link rel="icon " href="/favicon.ico" />
       </Head>
       <div className="flex min-h-screen flex-col justify-between ">
-        <header className=" mb-32">
+        <header className="mb-32">
           <Navbar />
         </header>
         <main
