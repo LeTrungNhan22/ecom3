@@ -73,9 +73,9 @@ const ShippingScreen = () => {
                     {...register("fullName", {
                       required: "Vui lòng nhập họ và tên đầy đủ của bạn",
                     })}
+                    type="text"
                     id="fullName"
                     name="fullName"
-                    type="text"
                     autoFocus
                   />
                   {errors.fullName && (

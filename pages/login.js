@@ -7,7 +7,7 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 import Layout from "../components/Layout";
-import toast, { ToastBar, Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { getError } from "../utils/error";
 
 const LoginScreen = () => {
@@ -16,7 +16,6 @@ const LoginScreen = () => {
   const { redirect } = router.query;
 
   useEffect(() => {
-    console.log(session?.user);
     if (session?.user) {
       router.push(redirect || "/");
     }
@@ -60,16 +59,10 @@ const LoginScreen = () => {
               </h2>
               <div className="border-2 w-10 bg-amber-600 border-amber-600 inline-block mb-2"></div>
               <div className="flex justify-center my-2">
-                <a
-                  href=""
-                  className="border-2 text-amber-600 shadow-lg hover:text-blue-600  hover:scale-105  duration-300 transition border-gray-400 rounded-full p-3 mx-1"
-                >
+                <a className="border-2 text-amber-600 shadow-lg hover:text-blue-600  hover:scale-105  duration-300 transition border-gray-400 rounded-full p-3 mx-1">
                   <FaFacebookF className="text-2xl" />
                 </a>
-                <a
-                  href=""
-                  className="border-2 text-amber-600 shadow-lg hover:scale-105 hover:text-green-500  duration-300 transition  border-gray-400 rounded-full p-3 mx-1"
-                >
+                <a className="border-2 text-amber-600 shadow-lg hover:scale-105 hover:text-green-500  duration-300 transition  border-gray-400 rounded-full p-3 mx-1">
                   <FaGoogle className="text-2xl" />
                 </a>
               </div>

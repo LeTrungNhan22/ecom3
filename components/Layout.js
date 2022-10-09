@@ -17,8 +17,8 @@ const Layout = ({ title, children }) => {
           <Navbar />
         </header>
         <main
-          className="xl:container mx-auto w-full 
-                         md:mt-0 relative px-2 sm:px-0 "
+          className="xl:max-w-screen-xl mx-auto w-full 
+                    md:mt-0 relative px-2 sm:px-0 "
         >
           {children}
         </main>

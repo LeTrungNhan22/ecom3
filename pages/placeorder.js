@@ -39,7 +39,7 @@ export default function PlaceOrderScreen() {
     try {
       setLoading(true);
       const { data } = await axios.post("/api/orders", {
-        cartItems: cartItems,
+        orderItems: cartItems,
         shippingAddress,
         paymentMethod,
         itemsPrice,
