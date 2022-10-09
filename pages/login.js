@@ -96,7 +96,7 @@ const LoginScreen = () => {
                     id="email"
                     placeholder="Email"
                     autoFocus
-                    className="outline-none bg-gray-200 text-sm flex-1 "
+                    className="bg-gray-200 text-sm flex-1 rounded-full border-none outline-none "
                   ></input>
                 </div>
 

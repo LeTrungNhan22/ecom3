@@ -4,12 +4,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-
 import CheckoutWizard from "../components/CheckoutWizard";
 import Layout from "../components/Layout";
 import { Store } from "../utils/Store";
 
-const PaymentScreen = () => {
+export default function PaymentScreen() {
   const router = useRouter();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
   const { state, dispatch } = useContext(Store);
@@ -17,8 +16,11 @@ const PaymentScreen = () => {
   const { shippingAddress, paymentMethod } = cart;
 
   const {
+    // eslint-disable-next-line no-unused-vars
     register,
+    // eslint-disable-next-line no-unused-vars
     handleSubmit,
+    // eslint-disable-next-line no-unused-vars
     formState: { errors },
   } = useForm();
 
@@ -88,6 +90,6 @@ const PaymentScreen = () => {
       </div>
     </Layout>
   );
-};
+}
 
-export default PaymentScreen;
+PaymentScreen.auth = true;

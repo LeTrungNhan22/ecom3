@@ -47,6 +47,7 @@ a {
   }
   [type="password"] {
     @apply w-full border-gray-300 rounded-lg 
+    border-none
      focus:border-gray-300 
      focus:ring-0;
   }
@@ -57,6 +58,7 @@ a {
     @apply bg-white text-gray-700
         w-full min-h-[10rem]
         shadow-md rounded-md 
+        drop-shadow-md
         overflow-hidden 
         hover:shadow-lg 
         transition duration-300;
@@ -95,7 +97,7 @@ a {
       hover:bg-gray-300/80 transition 
       rounded-md hover:shadow-md;
   }
-  
+
   .loginFormInput {
     @apply outline-none bg-gray-200 text-sm flex-1 
     p-0;

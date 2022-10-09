@@ -9,7 +9,7 @@ import {
 import toast from "react-hot-toast";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-
+/*<-------------------------/------------------------->*/
 import { Store } from "../utils/Store";
 import Layout from "../components/Layout";
 import emptyCart from "../assets/emptyCart.svg";

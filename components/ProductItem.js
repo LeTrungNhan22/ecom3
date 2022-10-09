@@ -18,7 +18,7 @@ export default function ProductItem({ product, addToCartHandler }) {
       layout
       className="product"
     >
-      <div className="card hover:scale-105">
+      <div className="card hover:drop-shadow-lg hover:shadow-gray-600">
         <Link href={`/product/${product.slug}`}>
           <a>
             <motion.div layoutId={product.slug} className="product__image">
@@ -26,7 +26,7 @@ export default function ProductItem({ product, addToCartHandler }) {
                 loading="lazy"
                 src={product.image}
                 alt={product.name}
-                className="w-full max-h-fit object-cover object-center shadow-md hover:shadow-lg"
+                className="w-full max-h-fit object-cover object-center shadow-md "
               />
             </motion.div>
           </a>

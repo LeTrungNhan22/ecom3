@@ -63,10 +63,9 @@ const Header = () => {
         {/* search bar */}
         <div
           className="hidden lg:flex justify-center w-1/2 max-w-sm relative shadow-md rounded-ful
-                        transition duration-300 focus-within:scale-105 focus-within:shadow-xl rounded-full"
+                        transition duration-200 focus-within:scale-105 focus-within:shadow-xl rounded-full"
         >
           <input
-            type="text"
             className="w-full border border-amber-500 border-r-0 pl-12 py-3 pr-3 rounded-l-full
                         focus:outline-none "
             placeholder="Tìm kiểm sản phẩm..."
