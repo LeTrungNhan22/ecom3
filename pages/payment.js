@@ -9,20 +9,11 @@ import Layout from "../components/Layout";
 import { Store } from "../utils/Store";
 
 export default function PaymentScreen() {
-  const router = useRouter();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const { shippingAddress, paymentMethod } = cart;
-
-  const {
-    // eslint-disable-next-line no-unused-vars
-    register,
-    // eslint-disable-next-line no-unused-vars
-    handleSubmit,
-    // eslint-disable-next-line no-unused-vars
-    formState: { errors },
-  } = useForm();
+  const router = useRouter();
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -30,10 +21,8 @@ export default function PaymentScreen() {
       toast.error("Payment method is required");
     }
     dispatch({
-      type: " SAVE_PAYMENT_METHOD",
-      payload: {
-        selectedPaymentMethod,
-      },
+      type: "SAVE_PAYMENT_METHOD",
+      payload: selectedPaymentMethod,
     });
 
     Cookies.set(
