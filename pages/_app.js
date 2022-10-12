@@ -1,5 +1,7 @@
 import { Toaster } from "react-hot-toast";
 import { SessionProvider, useSession } from "next-auth/react";
+import NextNProgress from "nextjs-progressbar";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 import "../styles/globals.css";
 import { StoreProvider } from "../utils/Store";
@@ -10,13 +12,23 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     <SessionProvider session={session}>
       <StoreProvider>
         <Toaster position="top-center" reverseOrder={true} />
-        {Component.auth ? (
-          <Auth>
+        <NextNProgress
+          color="linear-gradient(to right, #ffcf1b, #ff881b);"
+          startPosition={0.3}
+          stopDelayMs={200}
+          height={3}
+          showOnShallow={true}
+          options={{ showSpinner: false, easing: "ease" }}
+        />
+        <PayPalScriptProvider deferLoading={true}>
+          {Component.auth ? (
+            <Auth>
+              <Component {...pageProps} />
+            </Auth>
+          ) : (
             <Component {...pageProps} />
-          </Auth>
-        ) : (
-          <Component {...pageProps} />
-        )}
+          )}
+        </PayPalScriptProvider>
       </StoreProvider>
     </SessionProvider>
   );

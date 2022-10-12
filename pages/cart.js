@@ -107,8 +107,8 @@ const CartScreen = () => {
       ) : (
         <div className="grid md:grid-cols-4 md:map-5 ">
           <div className="overflow-x-auto md:col-span-3 mx-3">
-            <table className="min-w-full mb-3">
-              <thead className="border border-b border-amber-500">
+            <table className="min-w-full mb-3 card">
+              <thead className="">
                 <tr>
                   <th className="p-5 text-left">Sản phẩm </th>
                   <th className="p-5 text-center">Tên sản phẩm</th>
@@ -119,10 +119,7 @@ const CartScreen = () => {
               </thead>
               <tbody>
                 {cartItems.map((item) => (
-                  <tr
-                    key={item.slug}
-                    className="border border-b border-amber-500"
-                  >
+                  <tr key={item.slug} className="">
                     <td>
                       <Link href={`product/${item.slug}`}>
                         <a className="flex items-center m-5 ">

@@ -33,7 +33,7 @@ export default function ProductItem({ product, addToCartHandler }) {
             </motion.div>
           </a>
         </Link>
-        <div className="p-5 flex-col gap-4 space-y-2">
+        <div className="p-5 flex-col  space-y-2">
           {/* badge */}
           <div className="flex items-center  gap-2">
             <span className="badge">{product.brand}</span>
@@ -51,10 +51,10 @@ export default function ProductItem({ product, addToCartHandler }) {
               <span className="text-sm line-through opacity-50">
                 ${product.price * 0.2 + product.price}
               </span>
-              <span className="discount-percent">save 20%</span>
+              <span className="discount-percent ">save 20%</span>
             </div>
           </div>
-          <span className="flex items-center mt-1">
+          <span className="flex items-center">
             <ReactStars
               size={20}
               isHalf={true}
